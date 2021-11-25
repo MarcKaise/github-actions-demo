@@ -24,7 +24,7 @@ source "${BATS_TEST_DIRNAME}/../hello.sh" >/dev/null 2>/dev/null
     )
     run read_json
     result="1"
-    for VALID_BUILD_TYPE in $VALID_BUILD_TYPES[@]; do
+    for VALID_BUILD_TYPE in ${VALID_BUILD_TYPES[@]}; do
         if [ $build_type = $VALID_BUILD_TYPE ]; then
             result="0"
         fi
@@ -43,7 +43,7 @@ source "${BATS_TEST_DIRNAME}/../hello.sh" >/dev/null 2>/dev/null
     )
     run read_json
     result="1"
-    for VALID_BUILD_OPTION in $VALID_BUILD_OPTIONS[@]; do
+    for VALID_BUILD_OPTION in ${VALID_BUILD_OPTIONS[@]}; do
         if [ $build_option = $VALID_BUILD_OPTION ]; then
             result="0"
         fi
