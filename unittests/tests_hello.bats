@@ -35,5 +35,5 @@ BUILD_OPTION_LIST=(
             CHECK_TYPE="0"
         fi
     done
-    [ $status -eq 0 ]
+    [ $CHECK_TYPE -eq 0 ]
 }
