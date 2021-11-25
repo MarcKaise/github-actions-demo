@@ -1,0 +1,22 @@
+name: bats
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup BATS
+        uses: mig4/setup-bats@v1
+      
+      - name: Setup Bats libs
+        uses: brokenpip3/setup-bats-libs@0.0.3
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Test
+        run: bats -r .
