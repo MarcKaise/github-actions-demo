@@ -32,7 +32,7 @@ source "${BATS_TEST_DIRNAME}/../hello.sh" >/dev/null 2>/dev/null
     [ $result -eq 0 ]
 }
 
-@test "check build_type" {
+@test "check build_option" {
     VALID_BUILD_OPTIONS=(
         "release"
         "release_dlr_ver2"
