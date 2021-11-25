@@ -11,14 +11,8 @@ function hello_error () {
 }
 
 function read_json () {
-    name=$(cat config.json | jq -r '.branch_name' )
-    type=$(cat config.json | jq -r '.build_type' )
-    option=$(cat config.json | jq -r '.build_option' )
+    branch_name=$(cat config.json | jq -r '.branch_name' )
+    build_type=$(cat config.json | jq -r '.build_type' )
+    build_option=$(cat config.json | jq -r '.build_option' )
     return 0
 }
-
-read_json
-
-echo $name
-echo $type
-echo $option
