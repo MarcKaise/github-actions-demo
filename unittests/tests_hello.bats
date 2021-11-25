@@ -29,11 +29,11 @@ BUILD_OPTION_LIST=(
 
 @test "check build_type" {
     run read_json
-    CHECK_TYPE="1"
-    for TYPE in "${BUILD_TYPE_LIST[@]}"; do
-        if [ "${BUILD_TYPE}" = "${TYPE}" ]; then
-            CHECK_TYPE="0"
+    result="1"
+    for BUILD_TYPE in "${BUILD_TYPE_LIST[@]}"; do
+        if [ $type = $BUILD_TYPE ]; then
+            result="0"
         fi
     done
-    [ $CHECK_TYPE -eq 0 ]
+    [ $result -eq 0 ]
 }
