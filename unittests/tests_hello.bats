@@ -15,13 +15,13 @@ source "${BATS_TEST_DIRNAME}/../hello.sh" >/dev/null 2>/dev/null
     [ $status -eq 1 ]
 }
 
+VALID_BUILD_TYPES=(
+    "standard"
+    "safety"
+    "standard52"
+    "safety52"
+)
 @test "check build_type" {
-    VALID_BUILD_TYPES=(
-        "standard"
-        "safety"
-        "standard52"
-        "safety52"
-    )
     run read_json
     result="1"
     for VALID_BUILD_TYPE in ${VALID_BUILD_TYPES[@]}; do
@@ -32,15 +32,15 @@ source "${BATS_TEST_DIRNAME}/../hello.sh" >/dev/null 2>/dev/null
     [ $result -eq 0 ]
 }
 
+VALID_BUILD_OPTIONS=(
+    "release"
+    "release_dlr_ver2"
+    "debug"
+    "fault_injection"
+    "eventlog_long_mode"
+    "verbose"
+)
 @test "check build_option" {
-    VALID_BUILD_OPTIONS=(
-        "release"
-        "release_dlr_ver2"
-        "debug"
-        "fault_injection"
-        "eventlog_long_mode"
-        "verbose"
-    )
     run read_json
     result="1"
     for VALID_BUILD_OPTION in ${VALID_BUILD_OPTIONS[@]}; do
