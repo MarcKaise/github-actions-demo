@@ -2,8 +2,21 @@
 
 source "${BATS_TEST_DIRNAME}/../hello.sh" >/dev/null 2>/dev/null
 
+VALID_BUILD_TYPES=(
+    "standard"
+    "safety"
+    "standard52"
+    "safety52"
+)
 
-
+VALID_BUILD_OPTIONS=(
+    "release"
+    "release_dlr_ver2"
+    "debug"
+    "fault_injection"
+    "eventlog_long_mode"
+    "verbose"
+)
 
 @test "hello no error" {
     run hello_no_error
@@ -15,12 +28,6 @@ source "${BATS_TEST_DIRNAME}/../hello.sh" >/dev/null 2>/dev/null
     [ $status -eq 1 ]
 }
 
-VALID_BUILD_TYPES=(
-    "standard"
-    "safety"
-    "standard52"
-    "safety52"
-)
 @test "check build_type" {
     run read_json
     result="1"
@@ -32,14 +39,6 @@ VALID_BUILD_TYPES=(
     [ $result -eq 0 ]
 }
 
-VALID_BUILD_OPTIONS=(
-    "release"
-    "release_dlr_ver2"
-    "debug"
-    "fault_injection"
-    "eventlog_long_mode"
-    "verbose"
-)
 @test "check build_option" {
     run read_json
     result="1"
