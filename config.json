@@ -1,5 +1,5 @@
 {
     "branch_name":"dummy_branch_name",
-    "build_type":"safe",
+    "build_type":"safety",
     "build_option":"release"
 }
