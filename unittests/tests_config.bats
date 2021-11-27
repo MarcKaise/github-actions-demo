@@ -36,7 +36,12 @@ teardown() {
     # Test
     run git clone https://github.com/MarcKaise/hello-world.git
     [ $status -eq 0 ]
+    run pwd
+    [ $status -eq 0 ]
     run cd hello-world/
+    [ $status -eq 0 ]
+    run pwd
+    [ $status -eq 0 ]
     run git show-ref $branch_name
     [ $status -eq 0 ]
 }
