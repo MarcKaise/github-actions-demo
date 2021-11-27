@@ -34,15 +34,15 @@ teardown() {
     echo "Invalid branch_name. Please check config.json"
 
     # Test
-    run git clone https://github.com/MarcKaise/hello-world.git
+    git clone https://github.com/MarcKaise/hello-world.git
     [ $status -eq 0 ]
-    run pwd
+    pwd
     [ $status -eq 0 ]
-    run cd hello-world/
+    cd hello-world/
     [ $status -eq 0 ]
-    run pwd
+    pwd
     [ $status -eq 0 ]
-    run git show-ref $branch_name
+    git show-ref $branch_name
     [ $status -eq 0 ]
 }
 
