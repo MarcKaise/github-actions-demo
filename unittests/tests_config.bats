@@ -29,20 +29,13 @@ teardown() {
     rm -rf hello-world/
 }
 
-@test "check access to git repo" {
-    # Error Message
-    echo "Failed to connect git repository."
-
-    # Test
-    run git clone https://github.com/MarcKaise/hello-world.git
-    [ $status -eq 0 ]
-}
-
-@test "check branch name" {
+@test "check branch_name" {
     # Error Message
     echo "Invalid branch_name. Please check config.json"
 
     # Test
+    run git clone https://github.com/MarcKaise/hello-world.git
+    [ $status -eq 0 ]
     run cd hello-world/
     run git show-ref $branch_name
     [ $status -eq 0 ]
