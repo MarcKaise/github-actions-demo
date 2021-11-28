@@ -1,6 +1,9 @@
 #!/usr/bin/env bats
 
 setup() {
+    # Configulation
+    git_path=https://github.com/MarcKaise/hello-world.git
+
     # Read config.json
     CONF="${BATS_TEST_DIRNAME}/../config.json"
     branch_name=$(cat $CONF | jq -r '.branch_name' )
@@ -26,7 +29,7 @@ setup() {
 }
 
 teardown() {
-    rm -rf hello-world/
+    rm -rf test_branchname/
 }
 
 @test "check branch_name" {
@@ -34,15 +37,7 @@ teardown() {
     echo "Invalid branch_name. Please check config.json"
 
     # Test
-    git clone https://github.com/MarcKaise/hello-world.git
-    [ $status -eq 0 ]
-    pwd
-    [ $status -eq 0 ]
-    cd hello-world/
-    [ $status -eq 0 ]
-    pwd
-    [ $status -eq 0 ]
-    git show-ref $branch_name
+    run git clone -b $branch_name --depth 1 $git_path test_branchname/
     [ $status -eq 0 ]
 }
 
