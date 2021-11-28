@@ -1,6 +1,9 @@
 #!/usr/bin/env bats
 
 setup() {
+    # Configulation
+    git_path=https://github.com/MarcKaise/hello-world.git
+
     # Read config.json
     CONF="${BATS_TEST_DIRNAME}/../config.json"
     branch_name=$(cat $CONF | jq -r '.branch_name' )
@@ -23,6 +26,19 @@ setup() {
         "eventlog_long_mode"
         "verbose"
     )
+}
+
+teardown() {
+    rm -rf test_branchname/
+}
+
+@test "check branch_name" {
+    # Error Message
+    echo "Invalid branch_name. Please check config.json"
+
+    # Test
+    run git clone -b $branch_name --depth 1 $git_path test_branchname/
+    [ $status -eq 0 ]
 }
 
 @test "check build_type" {
