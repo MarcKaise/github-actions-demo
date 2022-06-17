@@ -11,5 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run git command
+      - name: Run git command 1
         run: git status
+
+      - name: Run git command 2
+        run: git for-each-ref
+        
