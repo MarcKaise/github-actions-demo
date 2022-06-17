@@ -17,5 +17,11 @@ jobs:
         run: git status
 
       - name: Run git command 2
-        run: git for-each-ref
-        
+        run: |
+          msg=$(
+            git for-each-ref \
+              --sort=author refs/ \
+              --format='%(refname:lstrip=3) %(committerdate:raw) %(authorname) %(authordate:iso)' \
+              | awk "\$2 < $(date -d "-120 day" "+%s") {print(\$1,\$4,\$5)}"
+          )
+          echo "$msg"
